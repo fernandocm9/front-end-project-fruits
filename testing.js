@@ -17,12 +17,20 @@ function all(){
     submit.textContent = 'Search Fruit'
     searchCont.append(submit)
 
+    const picButton = document.createElement('button')
+    picButton.className = 'picButton'
+    picButton.textContent = 'Click here for pictures'
+    
+    const outerNutCont = document.createElement('div')
+    outerNutCont.className = 'outerNutCont'
 
     const container = document.createElement('div')
     container.className = 'nutCont'
+    
     const genus = document.createElement('div')
     genus.className = 'fruitFacts'
     const fruitName = document.createElement('div')
+    fruitName.id = 'fruitName'
     fruitName.className = 'fruitFacts'
     const family = document.createElement('div')
     family.className = 'fruitFacts'
@@ -41,8 +49,10 @@ function all(){
     infoContainer.className = 'infoContainer'
     const genusInfoHead = document.createElement('div')
     genusInfoHead.className = 'genusInfoHead'
+    genusInfoHead.textContent = 'Genus Information'
     const famInfoHead = document.createElement('div')
     famInfoHead.className = 'famInfoHead'
+    famInfoHead.textContent = 'Family Information'
     const genusInfo = document.createElement('div')
     genusInfo.className = 'genusInfo'
     const famInfo = document.createElement('div')
@@ -88,8 +98,10 @@ function all(){
     vitaceae.textContent = 'The Vitaceae are a family of flowering plants, with 14 genera and around 910 known species, including common plants such as grapevines (Vitis spp.) and Virginia creeper (Parthenocissus quinquefolia). The family name is derived from the genus Vitis.'
     famInfo.appendChild(vitaceae)
 
-    body.appendChild(container)
+    body.appendChild(outerNutCont)
+    outerNutCont.appendChild(container)
     container.appendChild(fruitName)
+    
     container.appendChild(genus)
     container.appendChild(family)
     container.appendChild(nutrition)
@@ -129,7 +141,12 @@ function all(){
                     fat.textContent = `Fat: ${data.nutritions.fat}g`
                     calories.textContent = `Calories: ${data.nutritions.calories}`
                     sugar.textContent = `Sugar: ${data.nutritions.sugar}g`
-                    
+                    fruitName.appendChild(picButton)
+
+                    picButton.addEventListener('click', function(){
+                       window.open(`https://www.google.com/search?tbm=isch&q=${data.name}`, '_blank').focus()
+                    })
+                        
                     console.log(data)
                 })
             

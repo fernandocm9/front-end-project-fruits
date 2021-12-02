@@ -21,20 +21,13 @@ body{
 }
 
 .nutCont{
-    padding-left: 50px;
-    padding-right: 50px;
-    
     font-family: papyrus;
 }
 
-.infoContainer{
-    padding-left: 50px;
-    padding-right: 50px;
-}
 
 .genusInfo{
     background-color: rgba(88, 235, 174, 0.836);
-
+    border-radius: 5px;
 }
 
 .genusP{
@@ -50,13 +43,14 @@ body{
 
 .famInfo{
     background-color: rgba(245, 192, 179, 0.877);
+    border-radius: 5px;
 }
 
 .fruitFacts{
     background: rgba(255, 127, 80, 0.822);
     padding: 4px;
     display: flex;
-    align-items: baseline;
+    
 }
 
 button {
@@ -85,4 +79,39 @@ button:active {
 
   input:focus {
     background-color: rgb(127, 213, 241);
+  }
+
+  .genusInfoHead{
+      font-family: papyrus;
+      display: flex;
+      justify-content: center;
+      font-size: x-large;
+      text-shadow: 1px 1px 1px rgb(255, 255, 255);
+      text-decoration: underline;
+      padding-top: 12px;
+  }
+
+  .famInfoHead{
+      font-family: papyrus;
+      display: flex;
+      justify-content: center;
+      font-size: x-large;
+      text-shadow: 1px 1px 1px rgb(255, 255, 255);
+      text-decoration: underline;
+  }
+
+  #fruitName{
+      display: flex;
+      justify-content: space-between;
+      
+  }
+
+  .picButton{
+      height: 40px;
+  }
+
+  .outerNutCont{
+    display: flex;
+    justify-content: center;
+     
   }
