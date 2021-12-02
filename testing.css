@@ -53,14 +53,14 @@ body{
     
 }
 
-button {
+.button {
     transition-duration: 0.4s;
     background-color: #1034d4; 
     color: white;
     border: 1px solid black;
   }
   
-button:hover {
+.button:hover {
     background-color: white;
     color: black;
     
@@ -114,4 +114,9 @@ button:active {
     display: flex;
     justify-content: center;
      
+  }
+
+  .caloriesButton{
+      background: green;
+      color: white;
   }

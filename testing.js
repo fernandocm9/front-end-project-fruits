@@ -14,11 +14,22 @@ function all(){
     const search = document.createElement('input')
     searchCont.append(search)
     const submit = document.createElement('button')
+    submit.className = 'button'
     submit.textContent = 'Search Fruit'
     searchCont.append(submit)
 
+    const leastCalButton = document.createElement('button')
+    leastCalButton.className = 'caloriesButton'
+    leastCalButton.textContent = 'Lowest Calorie Fruit'
+    searchCont.append(leastCalButton)
+
+    const mostCalButton = document.createElement('button')
+    mostCalButton.className = 'caloriesButton'
+    mostCalButton.textContent = 'Highest Calorie Fruit'
+    searchCont.append(mostCalButton)
+
     const picButton = document.createElement('button')
-    picButton.className = 'picButton'
+    picButton.className = 'button'
     picButton.textContent = 'Click here for pictures'
     
     const outerNutCont = document.createElement('div')
@@ -117,7 +128,13 @@ function all(){
     infoContainer.appendChild(genusInfo)
     infoContainer.appendChild(famInfoHead)
     infoContainer.appendChild(famInfo)
+    
+    function button(){
 
+        let end = fruitName.textContent.indexOf('Click')
+        window.open(`https://www.google.com/search?tbm=isch&q=${fruitName.textContent.slice(6, end)}`, '_blank').focus()
+        
+    }
 
 
     function addEventListener(){
@@ -125,8 +142,7 @@ function all(){
             inputValue = search.value
             let fruitInfo = {}
             fetch(`https://api.codetabs.com/v1/proxy/?quest=https://fruityvice.com/api/fruit/${inputValue}`, (data) => {
-
-                
+              
             })
                 .then(response => response.json())
                 .then(data => {
@@ -142,10 +158,8 @@ function all(){
                     calories.textContent = `Calories: ${data.nutritions.calories}`
                     sugar.textContent = `Sugar: ${data.nutritions.sugar}g`
                     fruitName.appendChild(picButton)
-
-                    picButton.addEventListener('click', function(){
-                       window.open(`https://www.google.com/search?tbm=isch&q=${data.name}`, '_blank').focus()
-                    })
+                    picButton.removeEventListener('click', button)
+                    picButton.addEventListener('click', button)
                         
                     console.log(data)
                 })
@@ -153,8 +167,48 @@ function all(){
             
         })
         
+        leastCalButton.addEventListener('click', function(){
+            inputValue = 'Strawberry'
+            search.value = ''
+                    nutName.textContent = 'Nutrition(per 100g): '
+                    genus.textContent = `Genus: Fragaria`
+                    fruitName.textContent = `Name: ${inputValue}`
+                    family.textContent = `Family: Rosaceae`
+                    
+                    carbs.textContent = `Carbohydrates: 5.5g`
+                    protein.textContent = `Protein: 0.8g`
+                    fat.textContent = `Fat: 0.4g`
+                    calories.textContent = `Calories: 29`
+                    sugar.textContent = `Sugar: 5.4g`
+
+            fruitName.appendChild(picButton)
+
+            picButton.removeEventListener('click', button)
+
+            picButton.addEventListener('click', button)
+        })
         
-            
+        mostCalButton.addEventListener('click', function(){
+            inputValue = 'Durian'
+            search.value = ''
+                    nutName.textContent = 'Nutrition(per 100g): '
+                    genus.textContent = `Genus: Durio`
+                    fruitName.textContent = `Name: ${inputValue}`
+                    family.textContent = `Family: Malvaceae`
+                    
+                    carbs.textContent = `Carbohydrates: 27.1g`
+                    protein.textContent = `Protein: 1.5g`
+                    fat.textContent = `Fat: 5.3g`
+                    calories.textContent = `Calories: 147`
+                    sugar.textContent = `Sugar: 6.75g`
+
+
+            fruitName.appendChild(picButton)
+
+            picButton.removeEventListener('click', button)
+
+            picButton.addEventListener('click', button)
+        })
             
             
         
