@@ -1,0 +1,88 @@
+.titleName{
+    font-family: papyrus;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    
+}
+
+body{
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Fresh_fruit_for_squeezing_natural_juices_02.jpg/640px-Fresh_fruit_for_squeezing_natural_juices_02.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.searchCont{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.nutCont{
+    padding-left: 50px;
+    padding-right: 50px;
+    
+    font-family: papyrus;
+}
+
+.infoContainer{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.genusInfo{
+    background-color: rgba(88, 235, 174, 0.836);
+
+}
+
+.genusP{
+    font-family: papyrus;
+    font-size: medium;
+    padding: 10px;
+}
+.famP{
+    font-family: papyrus;
+    font-size: medium;
+    padding: 10px;
+}
+
+.famInfo{
+    background-color: rgba(245, 192, 179, 0.877);
+}
+
+.fruitFacts{
+    background: rgba(255, 127, 80, 0.822);
+    padding: 4px;
+    display: flex;
+    align-items: baseline;
+}
+
+button {
+    transition-duration: 0.4s;
+    background-color: #1034d4; 
+    color: white;
+    border: 1px solid black;
+  }
+  
+button:hover {
+    background-color: white;
+    color: black;
+    
+  }
+
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(3px);
+  }
+
+  input{
+      border: 1px solid black;
+      
+  }
+
+  input:focus {
+    background-color: rgb(127, 213, 241);
+  }
