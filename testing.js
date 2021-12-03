@@ -1,6 +1,7 @@
 function all(){
     let inputValue;
-    
+    let dataInfo;
+
     const body = document.body
     const title = document.createElement('div')
     const titleName = document.createElement('h2')
@@ -50,6 +51,7 @@ function all(){
     const nutName = document.createElement('div')
     
     const nutList = document.createElement('div')
+    nutList.className = 'nutList'
     const carbs = document.createElement('div')
     const protein = document.createElement('div')
     const fat = document.createElement('div')
@@ -111,8 +113,8 @@ function all(){
 
     body.appendChild(outerNutCont)
     outerNutCont.appendChild(container)
-    container.appendChild(fruitName)
     
+    container.appendChild(fruitName)
     container.appendChild(genus)
     container.appendChild(family)
     container.appendChild(nutrition)
@@ -138,10 +140,66 @@ function all(){
 
 
     function addEventListener(){
+        fetch(`https://api.codetabs.com/v1/proxy/?quest=https://fruityvice.com/api/fruit/all`)
+        .then(response => response.json())
+        .then(data => {
+            const allFruitsCont = document.createElement('div')
+            allFruitsCont.className = 'allFruitsCont'
+            body.append(allFruitsCont)
+
+            
+
+            for(let i = 0; i < data.length; i++){
+                const allFruitsInfoCont = document.createElement('div')
+                allFruitsInfoCont.className = `nutCont`
+                allFruitsCont.append(allFruitsInfoCont)
+
+                const allFruitsName = document.createElement('div')
+                allFruitsName.className = 'fruitFacts'
+                allFruitsName.textContent = `Name: ${data[i].name}`
+                const allFruitsGenus = document.createElement('div')
+                allFruitsGenus.className = 'fruitFacts'
+                allFruitsGenus.textContent = `Genus: ${data[i].genus}`
+                const allFruitsFam = document.createElement('div')
+                allFruitsFam.className = 'fruitFacts'
+                allFruitsFam.textContent = `Family: ${data[i].family}`
+                const allFruitsNutCont = document.createElement('div')
+                allFruitsNutCont.className = 'fruitFacts'
+                const allFruitsNutList = document.createElement('div')
+                const allFruitsNutInfo = document.createElement('div')
+                allFruitsNutInfo.textContent = `Nutrition(per 100g):`
+                const allFruitsCarbs = document.createElement('div')
+                allFruitsCarbs.textContent = `Carbohydrates: ${data[i].nutritions.carbohydrates}g`
+                const allFruitsProtein = document.createElement('div')
+                allFruitsProtein.textContent = `Protein: ${data[i].nutritions.protein}g`
+                const allFruitsFat = document.createElement('div')
+                allFruitsFat.textContent = `Fat: ${data[i].nutritions.fat}`
+                const allFruitsCals = document.createElement('div')
+                allFruitsCals.textContent = `Calories: ${data[i].nutritions.calories}`
+                const allFruitsSugar = document.createElement('div')
+                allFruitsSugar.textContent = `Sugar: ${data[i].nutritions.sugar}g`
+
+                allFruitsInfoCont.append(allFruitsName)
+                allFruitsInfoCont.append(allFruitsGenus)
+                allFruitsInfoCont.append(allFruitsFam)
+                allFruitsInfoCont.append(allFruitsNutCont)
+                allFruitsNutCont.append(allFruitsNutInfo)
+                allFruitsNutCont.append(allFruitsNutList)
+                allFruitsNutList.append(allFruitsCarbs)
+                allFruitsNutList.append(allFruitsProtein)
+                allFruitsNutList.append(allFruitsFat)
+                allFruitsNutList.append(allFruitsCals)
+                allFruitsNutList.append(allFruitsSugar)
+                
+            }
+
+            
+            console.log(data)
+        });
+        
         submit.addEventListener('click', function(){
             inputValue = search.value
-            let fruitInfo = {}
-            fetch(`https://api.codetabs.com/v1/proxy/?quest=https://fruityvice.com/api/fruit/${inputValue}`, (data) => {
+            fetch(`https://api.codetabs.com/v1/proxy/?quest=https://fruityvice.com/api/fruit/${inputValue}`, () => {
               
             })
                 .then(response => response.json())
@@ -210,12 +268,8 @@ function all(){
             picButton.addEventListener('click', button)
         })
             
-            
         
     }
-
-
-
     
     addEventListener()
 }
